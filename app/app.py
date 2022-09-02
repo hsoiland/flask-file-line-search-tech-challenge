@@ -1,23 +1,25 @@
 from flask import Flask, request, jsonify
 import re
 from service import FileSearchService
+import logging
 app = Flask(__name__)
 app.debug = True
 
-ISO_8601_RGX = "^\d{4}-(0\d|1[0-2])-([0-2]\d|3[0-2])(T(([01]\d|2[0-4]):([0-5]\d)(:[0-5]\d([\.,]\d+)?)?|([01]\d|2[0-4])(:[0-5]\d([\.,]\d+)?)?|([01]\d|2[0-4])([\.,]\d+)?))?([+-]\d\d(:[0-5]\d)?|Z)?$"
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST'])
 def get_file_rows():
     params = request.json
-    if not valid_date(params["to"]) and not valid_date(params["from"]):
+    filename, todate, fromdate = params["filename"], params["to"], params["from"]
+    logging.info(f'APP - get_file_rows: Starting - filename: %s from: %s to: %s' %(filename, todate, fromdate))
+
+    try:
+        service = FileSearchService(f'/app/test-files/%s' %filename, fromdate, todate)
+        listOfLines = service.get_file_rows_by_date_range()
+        logging.info("APP - get_file_rows: Success")
+        return jsonify(listOfLines)
+    except:
+        logging.error("APP - get_file_rows: Failed")
         return jsonify([])
-    service = FileSearchService(params["filename"], params["to"], params["from"])
-    listOfLines = service.get_file_rows_by_date_range()
-    return jsonify(listOfLines)
-
-def valid_date(date: str)-> bool:
-    return re.search(ISO_8601_RGX, date) is not None
-
+    
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=8279)
