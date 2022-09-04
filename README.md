@@ -1,7 +1,7 @@
-Rokt Parser
+Line Parser
 ===
 
-Rokt parser is a flask hosted application, it has a single route `/`.
+Line Parser is a flask hosted application, it has a single route `/`.
 This route takes a `filename` corresponding to a file in app/test-files
 and a `from` and `to` date to select the lines from request params.
 
