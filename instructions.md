@@ -1,7 +1,7 @@
-Rokt Backend Take Home
+Take Home
 ===
 
-The Rokt Backend Take Home is intended to test your abilities at building portable,
+The  Take Home is intended to test your abilities at building portable,
 correct, and readable code within a modern development ecosystem. The project will
 describe a simple business problem and expect you to solve it to your best ability.
 Great solutions are easily built, include necessary tests and documentation, solve
