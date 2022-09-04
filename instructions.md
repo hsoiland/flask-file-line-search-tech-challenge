@@ -106,8 +106,6 @@ your test methodology, embellishments, and places where you can improve.
 
 Please submit your take home as a compressed zip file to this google form:
 
-[Rokt Backend Takehome Submission](https://docs.google.com/forms/d/1FdP41PWZ8cJzNQoU7HEonWUrtR9Ef12iXtIhbnXnnb4/)
-
 ## Notes and Hints
 
 Some notes about the challenge:
