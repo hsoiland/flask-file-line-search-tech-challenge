@@ -15,7 +15,6 @@ customers. Some information about the text file:
 - Each line of the text file is an individual record and can be processed independently of the other records in the text file
 - The size of the file can range from a few KB to a few GB
 - The file will be ordered by iso8601 time ascending
-- Sample files can be found here: https://github.com/ROKT/backend-technical-test
 
 Here is the format of each line:
 
